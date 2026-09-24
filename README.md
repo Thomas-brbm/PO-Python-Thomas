@@ -1,3 +1,4 @@
 # PO Python Thomas
 In dit PO ga ik een spel maken met pygame
-Het plan: een 2d spel maken met pygame. Het moet een 2d zijaanzicht autospelletje worden net als Hill Climb Racing. De aspecten van Hill Climb Racing die ik wil proberen terug te laten komen in mijn spel zijn de realistische physics, zoals de zwaartekracht. Verder wil ik ook dat een te harde klap op de grond ervoor zorgt dat het mannetje dood gaat. Nog een belangrijk ding dat ik terug wil laten komen is de teruglopende benzine en dat er meer kracht en snelheid nodig is om een hogere heuvel op te komen.
+
+Het plan: een 2d spel maken met pygame. Ik ga snake namaken aan de hand van een tutorial. De tutorial komt van Kenny yip Coding. Ik wil na de tutorial waarden aanpassen om te tonen dat ik het begrijp. Verder ook nog een eigen snake en de bijbehorende dingen maken en proberen om die toe te voegen aan het spel i.p.v de assets die de man van de tutorial gebruikt
