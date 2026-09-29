@@ -1,9 +1,11 @@
 import pygame
 from sys import exit
 
+ROWS = 25
+COLUMNS = ROWS
 TILE_SIZE = 25
-GAME_WIDTH = 500
-GAME_HEIGHT = 500
+GAME_WIDTH = TILE_SIZE * COLUMNS
+GAME_HEIGHT = TILE_SIZE * ROWS
 
 pygame.init()
 window = pygame.display.set_mode((GAME_WIDTH, GAME_HEIGHT))
