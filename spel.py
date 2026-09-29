@@ -1,5 +1,6 @@
 import pygame
 from sys import exit
+import random
 
 ROWS = 25
 COLUMNS = ROWS
@@ -12,8 +13,12 @@ window = pygame.display.set_mode((GAME_WIDTH, GAME_HEIGHT))
 pygame.display.set_caption("Snake")
 clock = pygame.time.Clock()
 
-food = pygame.Rect(100, 150, TILE_SIZE, TILE_SIZE)
+def get_random(limit):
+    return random.randint(0, limit-1) * TILE_SIZE
 
+food = pygame.Rect(get_random(COLUMNS), get_random(ROWS), TILE_SIZE, TILE_SIZE)
+
+#game loop
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
