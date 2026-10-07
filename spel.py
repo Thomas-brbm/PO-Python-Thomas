@@ -7,6 +7,7 @@ COLUMNS = ROWS
 TILE_SIZE = 25
 GAME_WIDTH = TILE_SIZE * COLUMNS
 GAME_HEIGHT = TILE_SIZE * ROWS
+ACHTERGROND = "darkolivegreen2"
 
 pygame.init()
 window = pygame.display.set_mode((GAME_WIDTH, GAME_HEIGHT))
@@ -18,6 +19,8 @@ def get_random(limit):
 
 food = pygame.Rect(get_random(COLUMNS), get_random(ROWS), TILE_SIZE, TILE_SIZE)
 
+
+
 #game loop
 while True:
     for event in pygame.event.get():
@@ -25,6 +28,8 @@ while True:
             pygame.quit()
             exit()
 
-    pygame.draw.rect(window, "cyan", food)
+    window.fill(ACHTERGROND)
+
+    pygame.draw.rect(window, "red", food)
     pygame.display.update()
     clock.tick(10)
