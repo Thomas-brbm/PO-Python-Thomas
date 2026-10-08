@@ -19,7 +19,8 @@ def get_random(limit):
 
 food = pygame.Rect(get_random(COLUMNS), get_random(ROWS), TILE_SIZE, TILE_SIZE)
 
-
+snake = []
+snake.append(pygame.Rect(get_random(COLUMNS), get_random(ROWS), TILE_SIZE, TILE_SIZE)) #head
 
 #game loop
 while True:
@@ -31,5 +32,7 @@ while True:
     window.fill(ACHTERGROND)
 
     pygame.draw.rect(window, "red", food)
+    for snake_part in snake:
+        pygame.draw.rect(window, "darkolivegreen4", snake_part)
     pygame.display.update()
     clock.tick(10)
