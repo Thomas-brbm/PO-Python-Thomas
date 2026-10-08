@@ -8,6 +8,7 @@ TILE_SIZE = 25
 GAME_WIDTH = TILE_SIZE * COLUMNS
 GAME_HEIGHT = TILE_SIZE * ROWS
 ACHTERGROND = "darkolivegreen2"
+snake_velocity = (0, 0) #velocity x and y
 
 pygame.init()
 window = pygame.display.set_mode((GAME_WIDTH, GAME_HEIGHT))
@@ -28,6 +29,21 @@ while True:
         if event.type == pygame.QUIT:
             pygame.quit()
             exit()
+
+        if event.type == pygame.KEYDOWN:
+            if event.key in (pygame.K_UP, pygame.K_w):
+                snake_velocity = (0, -TILE_SIZE)
+            elif event.key in (pygame.K_DOWN, pygame.K_s):
+                snake_velocity = (0, TILE_SIZE)
+            elif event.key in (pygame.K_LEFT, pygame.K_a):
+                snake_velocity = (-TILE_SIZE, 0)
+            elif event.key in (pygame.K_RIGHT, pygame.K_d):
+                snake_velocity = (TILE_SIZE, 0)
+
+    #move
+    snake[0].move_ip(snake_velocity)
+
+
 
     window.fill(ACHTERGROND)
 
