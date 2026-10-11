@@ -33,13 +33,17 @@ while True:
 
         if event.type == pygame.KEYDOWN:
             if event.key in (pygame.K_UP, pygame.K_w):
-                snake_velocity = (0, -TILE_SIZE)
+                if snake_velocity != (0, TILE_SIZE):
+                    snake_velocity = (0, -TILE_SIZE)
             elif event.key in (pygame.K_DOWN, pygame.K_s):
-                snake_velocity = (0, TILE_SIZE)
+                if snake_velocity != (0, -TILE_SIZE):
+                    snake_velocity = (0, TILE_SIZE)
             elif event.key in (pygame.K_LEFT, pygame.K_a):
-                snake_velocity = (-TILE_SIZE, 0)
+                if snake_velocity != (TILE_SIZE, 0):
+                    snake_velocity = (-TILE_SIZE, 0)
             elif event.key in (pygame.K_RIGHT, pygame.K_d):
-                snake_velocity = (TILE_SIZE, 0)
+                if snake_velocity != (-TILE_SIZE, 0):
+                    snake_velocity = (TILE_SIZE, 0)
 
     for i in range (len(snake)-1, 0, -1):
         snake[i] = snake[i-1].copy()
