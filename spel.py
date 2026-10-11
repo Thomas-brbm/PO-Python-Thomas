@@ -44,6 +44,12 @@ while True:
         snake[i] = snake[i-1].copy()
     snake[0].move_ip(snake_velocity)
 
+    if not window.get_rect().contains(snake[0]):
+        snake.clear()
+        snake.append(pygame.Rect(get_random(COLUMNS), get_random(ROWS), TILE_SIZE, TILE_SIZE))
+        food = pygame.Rect(get_random(COLUMNS), get_random(ROWS), TILE_SIZE, TILE_SIZE)
+        snake_velocity = (0, 0)
+
     if snake[0].center == food.center:
         snake.append(food)
         food = pygame.Rect(get_random(COLUMNS), get_random(ROWS), TILE_SIZE, TILE_SIZE)
