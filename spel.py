@@ -40,10 +40,13 @@ while True:
             elif event.key in (pygame.K_RIGHT, pygame.K_d):
                 snake_velocity = (TILE_SIZE, 0)
 
-    #move
+    for i in range (len(snake)-1, 0, -1):
+        snake[i] = snake[i-1].copy()
     snake[0].move_ip(snake_velocity)
 
-
+    if snake[0].center == food.center:
+        snake.append(food)
+        food = pygame.Rect(get_random(COLUMNS), get_random(ROWS), TILE_SIZE, TILE_SIZE)
 
     window.fill(ACHTERGROND)
 
