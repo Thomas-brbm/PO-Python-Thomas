@@ -23,6 +23,7 @@ food = pygame.Rect(get_random(COLUMNS), get_random(ROWS), TILE_SIZE, TILE_SIZE)
 snake = []
 snake.append(pygame.Rect(get_random(COLUMNS), get_random(ROWS), TILE_SIZE, TILE_SIZE)) #head
 
+
 #game loop
 while True:
     for event in pygame.event.get():
@@ -59,5 +60,55 @@ while True:
     pygame.draw.rect(window, "red", food)
     for snake_part in snake:
         pygame.draw.rect(window, "darkolivegreen4", snake_part)
+
+        if snake_velocity == (0, 0):
+            pygame.draw.rect(window, "white", (snake[0].x + 0, snake[0].y + 4, 10, 6))
+            pygame.draw.rect(window, "white", (snake[0].x + 15, snake[0].y + 4, 10, 6))
+                        
+            pygame.draw.rect(window, "black", (snake[0].x + 5, snake[0].y + 4, 5, 6))
+            pygame.draw.rect(window, "black", (snake[0].x + 20, snake[0].y + 4, 5, 6))
+                        
+            pygame.draw.rect(window, "black", (snake[0].x + 7, snake[0].y + 19, 3, 3))
+            pygame.draw.rect(window, "black", (snake[0].x + 16, snake[0].y + 19, 3, 3))           
+
+        elif snake_velocity == (0, TILE_SIZE):
+            pygame.draw.rect(window, "white", (snake[0].x + 0, snake[0].y + 4, 10, 6))
+            pygame.draw.rect(window, "white", (snake[0].x + 15, snake[0].y + 4, 10, 6))
+            
+            pygame.draw.rect(window, "black", (snake[0].x + 5, snake[0].y + 4, 5, 6))
+            pygame.draw.rect(window, "black", (snake[0].x + 20, snake[0].y + 4, 5, 6))
+            
+            pygame.draw.rect(window, "black", (snake[0].x + 7, snake[0].y + 19, 3, 3))
+            pygame.draw.rect(window, "black", (snake[0].x + 16, snake[0].y + 19, 3, 3))
+
+        elif snake_velocity == (0, -TILE_SIZE):
+            pygame.draw.rect(window, "white", (snake[0].x + 0, snake[0].y + 17, 10, 6))
+            pygame.draw.rect(window, "white", (snake[0].x + 15, snake[0].y + 17, 10, 6))
+            
+            pygame.draw.rect(window, "black", (snake[0].x + 0, snake[0].y + 17, 5, 6))
+            pygame.draw.rect(window, "black", (snake[0].x + 15, snake[0].y + 17, 5, 6))
+            
+            pygame.draw.rect(window, "black", (snake[0].x + 7, snake[0].y + 3, 3, 3))
+            pygame.draw.rect(window, "black", (snake[0].x + 16, snake[0].y + 3, 3, 3))
+
+        elif snake_velocity == (TILE_SIZE, 0):
+            pygame.draw.rect(window, "white", (snake[0].x + 4, snake[0].y + 0, 6, 10))
+            pygame.draw.rect(window, "white", (snake[0].x + 4, snake[0].y + 15, 6, 10))
+                        
+            pygame.draw.rect(window, "black", (snake[0].x + 4, snake[0].y + 0, 6, 5))
+            pygame.draw.rect(window, "black", (snake[0].x + 4, snake[0].y + 15, 6, 5))
+                        
+            pygame.draw.rect(window, "black", (snake[0].x + 19, snake[0].y + 7, 3, 3))
+            pygame.draw.rect(window, "black", (snake[0].x + 19, snake[0].y + 16, 3, 3))
+
+        elif snake_velocity == (-TILE_SIZE, 0):
+            pygame.draw.rect(window, "white", (snake[0].x + 17, snake[0].y + 0, 6, 10))
+            pygame.draw.rect(window, "white", (snake[0].x + 17, snake[0].y + 15, 6, 10))
+                                    
+            pygame.draw.rect(window, "black", (snake[0].x + 17, snake[0].y + 5, 6, 5))
+            pygame.draw.rect(window, "black", (snake[0].x + 17, snake[0].y + 20, 6, 5))
+                                    
+            pygame.draw.rect(window, "black", (snake[0].x + 3, snake[0].y + 7, 3, 3))
+            pygame.draw.rect(window, "black", (snake[0].x + 3, snake[0].y + 16, 3, 3))  
     pygame.display.update()
     clock.tick(10)
