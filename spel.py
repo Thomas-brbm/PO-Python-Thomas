@@ -59,6 +59,13 @@ while True:
         snake.append(food)
         food = pygame.Rect(get_random(COLUMNS), get_random(ROWS), TILE_SIZE, TILE_SIZE)
 
+    if any([snake[0].center == snake[i].center for i in range(1, len(snake) - 1)]):
+        snake.clear()
+        snake.append(pygame.Rect(get_random(COLUMNS), get_random(ROWS), TILE_SIZE, TILE_SIZE))
+        food = pygame.Rect(get_random(COLUMNS), get_random(ROWS), TILE_SIZE, TILE_SIZE)
+        snake_velocity = (0, 0)
+
+
     window.fill(ACHTERGROND)
 
     pygame.draw.rect(window, "red", food)
