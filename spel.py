@@ -23,6 +23,13 @@ food = pygame.Rect(get_random(COLUMNS), get_random(ROWS), TILE_SIZE, TILE_SIZE)
 snake = []
 snake.append(pygame.Rect(get_random(COLUMNS), get_random(ROWS), TILE_SIZE, TILE_SIZE)) #head
 
+#load images
+UI_img = pygame.image.load("UI.png").convert_alpha()
+Pause_img = pygame.image.load("pause.png").convert_alpha()
+Pause_pressed_img = pygame.image.load("pause_pressed.png").convert_alpha()
+play_img = pygame.image.load("play.png").convert_alpha()
+play_pressed_img = pygame.image.load("play_pressed.png").convert_alpha()
+textborder_img = pygame.image.load("textborder.png").convert_alpha()
 
 #game loop
 while True:
