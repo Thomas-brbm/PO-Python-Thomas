@@ -23,6 +23,16 @@ font = pygame.font.Font("fonts/pixelfont.ttf", 48)
 def get_random(limit):
     return random.randint(0, limit-1) * TILE_SIZE
 
+def reset_game():
+    global snake_velocity, food, score
+
+    snake.clear()
+    snake.append(pygame.Rect(get_random(COLUMNS), get_random(ROWS), TILE_SIZE, TILE_SIZE))
+    food = spawn_food(snake)
+    snake_velocity = (0, 0)
+    pygame.mixer.music.play(-1)
+    score = 0
+
 def spawn_food(snake_list):
     while True:
         food = pygame.Rect(get_random(COLUMNS), get_random(ROWS), TILE_SIZE, TILE_SIZE)
@@ -47,6 +57,7 @@ snake = []
 snake.append(pygame.Rect(get_random(COLUMNS), get_random(ROWS), TILE_SIZE, TILE_SIZE)) #head
 
 food = spawn_food(snake)
+
 #game loop
 while True:
     for event in pygame.event.get():
@@ -73,12 +84,7 @@ while True:
     snake[0].move_ip(snake_velocity)
 
     if not window.get_rect().contains(snake[0]):
-        snake.clear()
-        snake.append(pygame.Rect(get_random(COLUMNS), get_random(ROWS), TILE_SIZE, TILE_SIZE))
-        food = spawn_food(snake)
-        snake_velocity = (0, 0)
-        pygame.mixer.music.play(-1)
-        score = 0
+        reset_game()
 
     if snake[0].center == food.center:
         pygame.mixer.Sound.play(eating_sound)
@@ -87,12 +93,7 @@ while True:
         score += 1
 
     if any([snake[0].center == snake[i].center for i in range(1, len(snake) - 1)]):
-        snake.clear()
-        snake.append(pygame.Rect(get_random(COLUMNS), get_random(ROWS), TILE_SIZE, TILE_SIZE))
-        food = spawn_food(snake)
-        snake_velocity = (0, 0)
-        pygame.mixer.music.play(-1)
-        score = 0
+        reset_game()
 
 
     window.fill(ACHTERGROND)
@@ -152,7 +153,7 @@ while True:
             pygame.draw.rect(window, "black", (snake[0].x + 3, snake[0].y + 16, 3, 3))  
 
     score_text = font.render(f"Score: {score}", False, "black")
-    window.blit(score_text, (10, 10))
+    window.blit(score_text, (260, 10))
 
     pygame.display.update()
     clock.tick(10)
